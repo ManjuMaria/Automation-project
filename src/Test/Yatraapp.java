@@ -1,8 +1,6 @@
 package Test;
-
 import org.testng.annotations.Test;
 import java.io.File;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -24,6 +22,7 @@ public class Yatraapp {
 	@BeforeTest
 	public void setup()
 	{
+		//alert handling
 		ChromeOptions options=new ChromeOptions();
 		options.addArguments("--disable-notifications");
 		driver =new ChromeDriver(options);
@@ -35,6 +34,8 @@ public void url()
 {
 	driver.get("https://www.yatra.com/");
 }
+
+
 @Test
 public void test()
 {
@@ -70,16 +71,11 @@ public void test2()
 	driver.findElement(By.xpath("//*[@id=\"js_yt_footer\"]/div/ul/li[3]/a")).click();
 
 
+	//new window
+		WebDriver driver1=driver.switchTo().newWindow(WindowType.TAB);
+		driver1.get("https://www.google.com//");
+		driver1.close();
 
-
-//new window
-	WebDriver driver1=driver.switchTo().newWindow(WindowType.TAB);
-	driver1.get("https://www.google.com//");
-	driver1.close();
+		}
 	
-}
-}
-
-
-
-
+	}
